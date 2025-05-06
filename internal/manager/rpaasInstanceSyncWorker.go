@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/tsuru/rate-limit-control-plane/internal/aggregator"
+	"github.com/tsuru/rate-limit-control-plane/internal/config"
 	"github.com/tsuru/rate-limit-control-plane/internal/ratelimit"
 )
 
@@ -37,7 +38,7 @@ func NewRpaasInstanceSyncWorker(rpaasInstanceName string, zones []string, notify
 		StopRpaasPodWorker:  make(chan string),
 		StopChan:            make(chan struct{}),
 	}
-	ticker := time.NewTicker(10 * time.Second)
+	ticker := time.NewTicker(config.Spec.ControllerMinutesInternval)
 
 	return &RpaasInstanceSyncWorker{
 		RpaasInstanceName:    rpaasInstanceName,

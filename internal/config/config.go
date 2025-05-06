@@ -12,8 +12,7 @@ import (
 )
 
 type Specification struct {
-	// TODO: Mudar para 5 mins
-	ControllerMinutesInternval time.Duration `default:"10s" envconfig:"controller_minutes_interval"`
+	ControllerMinutesInternval time.Duration `default:"1s" envconfig:"controller_minutes_interval"`
 }
 
 var Spec Specification
